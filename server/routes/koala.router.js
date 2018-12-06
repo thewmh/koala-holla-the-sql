@@ -11,7 +11,7 @@ const koalaSchema = new Schema({
     name: { type: String, required: true},
     gender: { type: String, required: true},
     age: { type: Number, required: true},
-    readyToTransfer: { type: Boolean, default: false, required: true},
+    rtt: { type: Boolean, default: false, required: true},
     notes: { type: String, required: true}
 });
 
@@ -23,14 +23,6 @@ router.get('/', (req, res) => {
         .then((results) => {
             res.send(results);
         })
-    // When you fetch all things in these GET routes, strongly encourage ORDER BY
-    // so that things always come back in a consistent order 
-    // const sqlText = `SELECT * FROM employees ORDER BY lastName;`;
-    // pool.query(sqlText)
-    //     .then((result) => {
-    //         console.log(`Got stuff back from the database`, result);
-    //         res.send(result.rows);
-    //     })
         .catch((error) => {
             console.log(`Error making database query`, error);
             res.sendStatus(500); // Good server always responds
@@ -53,34 +45,59 @@ router.post('/', (req, res) => {
         })
 });
 
-// router.put('/:id', (req, res) => {
-//     let updateEmployee = req.body;
-//     console.log('update:', req.body);
+// PUT ROUTE TO UPDATE READY TO TRANSFER FLAG
+router.put('/transfer/', (req, res) => {
+    let updateKoala = req.body;
+    // set the ready to transfer flag to true
+    updateKoala.rtt = true;
+    console.log('ready to transfer koala:', req.body);
 
-//     Employee.findByIdAndUpdate({
+    Koala.findByIdAndUpdate({
+        _id: req.body._id
+    }, updateKoala)
+    .then((results) => {
+    console.log(`Success making database UPDATE`, results);
+    res.sendStatus(200);
+    })
+    .catch((error) => {
+        console.log(`Error making database UPDATE`, error);
+        res.sendStatus(500); // Good server always responds
+    })
+})
+
+// PUT ROUTE TO UPDATE KOALA
+// router.put('/:id', (req, res) => {
+//     let updateKoala = req.body;
+//     console.log('update koala:', req.body);
+
+//     Koala.findByIdAndUpdate({
 //         _id: req.params.id
-//     }, updateEmployee)
+//     }, updateKoala)
 //     .then((results) => {
-//     console.log(`Success making database DELETE`, results);
+//     console.log(`Success making database UPDATE`, results);
 //     res.sendStatus(200);
-// })
-// .catch((error) => {
-//     console.log(`Error making database DELETE`, error);
-//     res.sendStatus(500); // Good server always responds
-// })
-// })
-// // Setup DELETE to remove an employee
-// router.delete('/:id', (req, res) => {
-//     let reqId = req.params.id;
-//     Employee.findByIdAndRemove({_id: reqId})
-//     .then((results) => {
-//         console.log(`Success making database DELETE`, results);
-//         res.sendStatus(200);
 //     })
 //     .catch((error) => {
-//         console.log(`Error making database DELETE`, error);
+//         console.log(`Error making database UPDATE`, error);
 //         res.sendStatus(500); // Good server always responds
 //     })
 // })
+
+// Setup DELETE to remove a koala
+router.delete('/', (req, res) => {
+    let reqId = req.query.id;
+    console.log('Delete request for id', reqId);
+    Koala.findOneAndDelete({
+        _id: reqId
+    })
+        .then( (removedDocument) => {
+            console.log('results', removedDocument);
+            res.sendStatus(200)
+        })
+        .catch( (error) => {
+            console.log('error', error);
+            res.sendStatus(500)
+        })
+}) 
 
 module.exports = router;
