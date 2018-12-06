@@ -10,7 +10,10 @@ const theme = createMuiTheme({
 			main: cyan[800],
 		},
 		background: 'powderblue',
-  }
+	},
+	typography: {
+		useNextVariants: true,
+	},
 });
 
 export default theme;
