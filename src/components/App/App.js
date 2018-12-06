@@ -5,8 +5,22 @@ import theme from './App.theme';
 import KoalaForm from '../AddKoalaForm/KoalaForm';
 import KoalaList from '../KoalaList/KoalaList';
 import Nav from '../Nav/Nav';
+import { connect } from 'react-redux';
+
 
 class App extends Component {
+
+    // When the App is first loaded get our stuff
+    componentDidMount() {
+      this.getKoalas();
+    }
+  
+    getKoalas = () => {
+      // Get our koalas from the server
+      console.log(this.props);
+      this.props.dispatch( { type: 'GET_KOALAS' } );
+    }
+
   render() {
     return (
       <MuiThemeProvider theme={theme}>
@@ -19,4 +33,8 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = reduxState => ({
+  reduxState,
+});
+
+export default connect(mapStateToProps)(App);

@@ -11,7 +11,7 @@ const koalaSchema = new Schema({
     name: { type: String, required: true},
     gender: { type: String, required: true},
     age: { type: Number, required: true},
-    readyToTransfer: { type: Boolean, default: false, required: true},
+    rtt: { type: Boolean, default: false, required: true},
     notes: { type: String, required: true}
 });
 
