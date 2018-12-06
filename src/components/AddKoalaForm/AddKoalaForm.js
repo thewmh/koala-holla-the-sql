@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class AddKoalaForm extends Component {
 
@@ -22,7 +23,7 @@ class AddKoalaForm extends Component {
     imprisonTheKoala = (event) => {
         event.preventDefault();
         console.log(this.state);
-        // this.props.dispatch({type: 'ADD_RECIPE_DESCRIPTION', payload: this.state});
+        this.props.dispatch({type: 'ADD_KOALA', payload: this.state});
         this.setState({newKoala: {
             name: '',
             gender: 'f',
@@ -52,4 +53,8 @@ class AddKoalaForm extends Component {
     }
 }
 
-export default AddKoalaForm;
+const mapStateToProps = reduxState => ({
+    reduxState,
+  });
+
+export default connect(mapStateToProps)(AddKoalaForm);
