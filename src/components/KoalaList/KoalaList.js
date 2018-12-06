@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -11,14 +10,7 @@ import Button from '@material-ui/core/Button';
 class KoalaList extends Component {
 
   deleteKoala = (id) => {
-    console.log('delete koala id: ', id);
-    axios.delete(`/api/koalas/${id}`)
-      .then((response) => {
-        this.props.getKoalas();
-      })
-      .catch((error) => {
-        alert('Error on Delete', error);
-      });
+    this.props.dispatch( { type: 'DELETE_KOALA', payload: id } );
   }
 
   render() {
