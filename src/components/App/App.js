@@ -6,12 +6,14 @@ import theme from './App.theme';
 // import './App.css';
 import AddKoalaForm from '../AddKoalaForm/AddKoalaForm';
 import KoalaList from '../KoalaList/KoalaList';
+import Nav from '../Nav/Nav';
 
 class App extends Component {
   render() {
     return (
       <MuiThemeProvider theme={theme}>
 				<CssBaseline />
+        <Nav/>
         <AddKoalaForm />
         <KoalaList />
       </MuiThemeProvider>
