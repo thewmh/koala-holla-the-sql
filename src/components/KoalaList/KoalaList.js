@@ -41,7 +41,7 @@ class KoalaList extends Component {
                                 <TableCell>{koala.name}</TableCell>
                                 <TableCell>{koala.gender}</TableCell>
                                 <TableCell>{koala.age}</TableCell>
-                                <TableCell>{koala.readyToTransfer}</TableCell>
+                                <TableCell>{koala.rtt ? ('True') : ('False')}</TableCell>
                                 <TableCell>{koala.notes}</TableCell>
                             </TableRow>
                         )

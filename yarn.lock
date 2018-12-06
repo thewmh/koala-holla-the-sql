@@ -5954,6 +5954,11 @@ keycode@^2.1.9:
   resolved "https://registry.yarnpkg.com/keycode/-/keycode-2.2.0.tgz#3d0af56dc7b8b8e5cba8d0a97f107204eec22b04"
   integrity sha1-PQr1bce4uOXLqNCpfxByBO7CKwQ=
 
+keypress@~0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/keypress/-/keypress-0.1.0.tgz#4a3188d4291b66b4f65edb99f806aa9ae293592a"
+  integrity sha1-SjGI1CkbZrT2XtuZ+AaqmuKTWSo=
+
 killable@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/killable/-/killable-1.0.1.tgz#4c8ce441187a061c7474fb87ca08e2a638194892"
@@ -9741,6 +9746,23 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
+
+typeface-karla@^0.0.54:
+  version "0.0.54"
+  resolved "https://registry.yarnpkg.com/typeface-karla/-/typeface-karla-0.0.54.tgz#f59d09b329a378db2161a3ecd6e6a0054699b579"
+  integrity sha512-8LI3n3KGAF94hvnozruF5oEu00YnVgkTjFDESs47S6Z6WeTEvyxLnoR9Dlv7IW48rqZekLMgYhfgkfxkKpYAEQ==
+
+typeface-roboto@^0.0.54:
+  version "0.0.54"
+  resolved "https://registry.yarnpkg.com/typeface-roboto/-/typeface-roboto-0.0.54.tgz#8f02c9a18d1cfa7f49381a6ff0d21ff061f38ad2"
+  integrity sha512-sOFA1FXgP0gOgBYlS6irwq6hHYA370KE3dPlgYEJHL3PJd5X8gQE0RmL79ONif6fL5JZuGDj+rtOrFeOqz5IZQ==
+
+typeface@^0.0.0:
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/typeface/-/typeface-0.0.0.tgz#9fe6c23c4eb4b86d3eba31994fd378f20cd03b8d"
+  integrity sha1-n+bCPE60uG0+ujGZT9N48gzQO40=
+  dependencies:
+    keypress "~0.1.0"
 
 ua-parser-js@^0.7.18:
   version "0.7.19"
