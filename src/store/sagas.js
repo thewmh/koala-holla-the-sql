@@ -25,12 +25,37 @@ function* addKoala(action) {
   }
 }
 
+function* deleteKoala(action) {
+  console.log('in delete saga for removing a koala', action.payload);
+  try {
+      // axios asynch call to add koala to server
+      yield call(axios.delete, '/api/koalas', action.payload);
+      yield put( { type: 'GET_KOALAS' } );
+  }
+  catch (error) {
+      console.log('error with delete request to /api/koalas');
+  }
+}
+
+function* transferKoala(action) {
+  console.log('in saga for set ready to transfer for a koala', action.payload);
+  try {
+      // axios asynch call to add koala to server
+      yield call(axios.put, '/api/koalas/transfer', action.payload);
+      yield put( { type: 'GET_KOALAS' } );
+  }
+  catch (error) {
+      console.log('error with transfer request to /api/koalas/transfer');
+  }
+}
+
+
 // Create the rootSaga generator function
 function* rootSaga() {
   yield takeEvery('GET_KOALAS', getKoalas);
   yield takeEvery('ADD_KOALA', addKoala);
-  // yield takeEvery('DELETE_KOALA', deleteKoala);  
-  // yield takeEvery('UPDATE_ORDER', updatePlantOrder)
+  yield takeEvery('DELETE_KOALA', deleteKoala);  
+  yield takeEvery('TRANSFER_KOALA', transferKoala);
 }
 
 export default rootSaga;

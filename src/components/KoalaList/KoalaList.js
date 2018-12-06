@@ -13,7 +13,23 @@ class KoalaList extends Component {
     this.props.dispatch( { type: 'DELETE_KOALA', payload: id } );
   }
 
+  readyToTransferButton = (boolean, koala, _id) => {
+      //  This function returns a button to click if the bear is
+      //  not ready to transfer and a little truck gif if it is
+    
+    if (!boolean) {
+      return <Button onClick={() => this.transferKoala(koala)} >Ready</Button>;
+    }
+    return <iframe title={_id} src="https://giphy.com/embed/IpCUVfiM7p8ly" width="110" height="30" frameBorder="0"  allowFullScreen></iframe>;
+  }
+
+  transferKoala = (koala) => {
+      console.log('koala: ', koala);
+      this.props.dispatch({ type: 'TRANSFER_KOALA', payload: koala });
+  }
+
   render() {
+
     return (
         <div>
             <Table>
@@ -34,7 +50,7 @@ class KoalaList extends Component {
                                 <TableCell>{koala.name}</TableCell>
                                 <TableCell>{koala.gender}</TableCell>
                                 <TableCell>{koala.age}</TableCell>
-                                <TableCell>{koala.rtt ? ('True') : ('False')}</TableCell>
+                                <TableCell>{this.readyToTransferButton(koala.rtt, koala, koala._id)}</TableCell>
                                 <TableCell>{koala.notes}</TableCell>
                                 <TableCell onClick={() => this.deleteKoala(koala._id)}><Button>Delete</Button></TableCell>
                             </TableRow>

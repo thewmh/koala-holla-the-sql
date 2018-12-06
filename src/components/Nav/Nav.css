@@ -13,7 +13,7 @@
 }
 
 .nav:hover {
-    color: #282c34;
+    /* color: #282c34; */
   min-height: 10%;
   margin-bottom: 50px;
   display: flex;
