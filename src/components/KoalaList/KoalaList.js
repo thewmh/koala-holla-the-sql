@@ -6,7 +6,7 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-// import Button from '@material-ui/core/Button';
+import Button from '@material-ui/core/Button';
 
 class KoalaList extends Component {
 
@@ -32,6 +32,7 @@ class KoalaList extends Component {
                         <TableCell>Age</TableCell>
                         <TableCell>Ready to Transfer</TableCell>
                         <TableCell>Notes</TableCell>
+                        <TableCell>Delete</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -43,6 +44,7 @@ class KoalaList extends Component {
                                 <TableCell>{koala.age}</TableCell>
                                 <TableCell>{koala.rtt ? ('True') : ('False')}</TableCell>
                                 <TableCell>{koala.notes}</TableCell>
+                                <TableCell onClick={() => this.deleteKoala(koala._id)}><Button>Delete</Button></TableCell>
                             </TableRow>
                         )
                     })}

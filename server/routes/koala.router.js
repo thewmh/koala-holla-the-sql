@@ -69,18 +69,21 @@ router.post('/', (req, res) => {
 //     res.sendStatus(500); // Good server always responds
 // })
 // })
-// // Setup DELETE to remove an employee
-// router.delete('/:id', (req, res) => {
-//     let reqId = req.params.id;
-//     Employee.findByIdAndRemove({_id: reqId})
-//     .then((results) => {
-//         console.log(`Success making database DELETE`, results);
-//         res.sendStatus(200);
-//     })
-//     .catch((error) => {
-//         console.log(`Error making database DELETE`, error);
-//         res.sendStatus(500); // Good server always responds
-//     })
-// })
+// Setup DELETE to remove a koala
+router.delete('/:id', (req, res) => {
+    let reqId = req.params.id;
+    console.log('Delete request for id', reqId);
+    Koala.findOneAndDelete({
+        _id: reqId
+    })
+        .then( (removedDocument) => {
+            console.log('results', removedDocument);
+            res.sendStatus(200)
+        })
+        .catch( (error) => {
+            console.log('error', error);
+            res.sendStatus(500)
+        })
+}) 
 
 module.exports = router;

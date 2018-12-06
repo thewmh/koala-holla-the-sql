@@ -29,7 +29,7 @@ function* addKoala(action) {
 function* rootSaga() {
   yield takeEvery('GET_KOALAS', getKoalas);
   yield takeEvery('ADD_KOALA', addKoala);
-  // yield takeEvery('DELETE_PLANT', deletePlant);  
+  // yield takeEvery('DELETE_KOALA', deleteKoala);  
   // yield takeEvery('UPDATE_ORDER', updatePlantOrder)
 }
 
