@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {MuiThemeProvider} from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from './App.theme';
-import KoalaForm from '../AddKoalaForm/KoalaForm';
+import KoalaForm from '../AddKoalaForm/AddKoalaForm';
 import KoalaList from '../KoalaList/KoalaList';
 import Nav from '../Nav/Nav';
 import { connect } from 'react-redux';
@@ -27,7 +27,7 @@ class App extends Component {
 				<CssBaseline />
         <Nav />
         <KoalaForm />
-        <KoalaList />
+        <KoalaList getKoalas={this.getKoalas} />
       </MuiThemeProvider>
     );
   }
