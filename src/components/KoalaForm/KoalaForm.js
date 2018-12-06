@@ -6,7 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
-import { FormControl, FormControlLabel } from '@material-ui/core';
+import { FormControlLabel } from '@material-ui/core';
 import Switch from '@material-ui/core/Switch';
 import Button from '@material-ui/core/Button';
 
@@ -54,6 +54,7 @@ class KoalaForm extends Component {
 	// onClick event to 'save' the data, result is imprisoned koala
 	imprisonTheKoala = (event) => {
 		console.log(this.state);
+		this.props.handleStateClick();
 		this.props.dispatch({type: 'ADD_KOALA', payload: this.state});
 		this.setState({
 			name: '',
@@ -68,6 +69,7 @@ class KoalaForm extends Component {
 		const { classes } = this.props;
 		return (
 			<div className={classes.root}>
+				<form onSubmit={this.imprisonTheKoala}>
 				<Grid container spacing={16} className={classes.grid}>
 					<Grid item xs={12}>
 					<Grid container spacing={16} className={classes.grid}>
@@ -145,6 +147,7 @@ class KoalaForm extends Component {
 					</Grid>
 				</Grid>
 				</Grid>
+				</form>
 			</div>
 		);
 	}
