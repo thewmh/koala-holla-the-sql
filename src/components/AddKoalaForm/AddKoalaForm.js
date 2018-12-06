@@ -24,13 +24,13 @@ class AddKoalaForm extends Component {
         event.preventDefault();
         console.log(this.state);
         this.props.dispatch({type: 'ADD_KOALA', payload: this.state});
-        this.setState({newKoala: {
+        this.setState({
             name: '',
             gender: 'f',
             age: 0,
             rtt: false,
             notes: '',
-        }});
+        });
         }
 
     render() {
@@ -42,7 +42,7 @@ class AddKoalaForm extends Component {
                 <option value="m">M</option>
                 </select>
                 <input required onChange={this.handleChange} type="number" placeholder="Enter the koala's age" name="age"></input>
-                <select required onChange={this.handleChange} placeholder="Enter the koala's ready to transfer status" name="ready-to-transfer">
+                <select required onChange={this.handleChange} placeholder="Enter the koala's ready to transfer status" name="rtt">
                 <option value="false">False</option>
                 <option value="true">True</option>
                 </select>
