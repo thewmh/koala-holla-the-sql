@@ -5,6 +5,7 @@ class KoalaList extends Component {
         return (
             <div>
                 <h1>This is the Koala List</h1>
+                
             </div>
         );
     }

@@ -38,22 +38,20 @@ router.get('/', (req, res) => {
 });
 
 
-// Setup a POST route to add a new employee to the database
-// router.post('/', (req, res) => {
-//     const employee = req.body;
-//     Employee.create({firstName: employee.firstName, lastName: employee.lastName, jobTitle: employee.jobTitle, annualSalary: employee.annualSalary, idNumber: employee.idNumber})
-// //     const sqlText = `INSERT INTO employees (firstName, lastName, jobTitle, annualSalary) VALUES 
-// //   ($1, $2, $3, $4)`;
-// //     pool.query(sqlText, [employee.firstName, employee.lastName, employee.jobTitle, employee.annualSalary])
-//         .then((result) => {
-//             console.log(`Added to the database`, result);
-//             res.sendStatus(201);
-//         })
-//         .catch((error) => {
-//             console.log(`Error making database POST`, error);
-//             res.sendStatus(500); // Good server always responds
-//         })
-// })
+// Setup a POST route to add a new koala to the database
+router.post('/', (req, res) => {
+    const newKoala = req.body;
+    console.log(newKoala);
+    Koala.create(newKoala)
+        .then( (results) => {
+            console.log('POST results ',results);
+            res.sendStatus(201)
+        })
+        .catch( (error) => {
+            console.log('POST error', error);
+            res.sendStatus(500)
+        })
+});
 
 // router.put('/:id', (req, res) => {
 //     let updateEmployee = req.body;
