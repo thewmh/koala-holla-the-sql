@@ -53,6 +53,7 @@ class KoalaForm extends Component {
 
 	// onClick event to 'save' the data, result is imprisoned koala
 	imprisonTheKoala = (event) => {
+		event.preventDefault();
 		console.log(this.state);
 		this.props.handleStateClick();
 		this.props.dispatch({type: 'ADD_KOALA', payload: this.state});
