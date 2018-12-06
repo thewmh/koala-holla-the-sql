@@ -17,7 +17,7 @@ const sagaMiddleware = createSagaMiddleware();
 function* getKoalas(action) {
   try {
       // need to send the action.payload to the /api/giphy
-      const response = yield call(axios.get, '/koalas')
+      const response = yield call(axios.get, '/api/koalas')
       console.log('api koalas call', response);
       yield put ( {type: 'PUT_KOALAS', payload: response.data });
   }
