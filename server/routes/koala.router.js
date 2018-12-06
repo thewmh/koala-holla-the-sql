@@ -49,7 +49,7 @@ router.post('/', (req, res) => {
 router.put('/transfer/', (req, res) => {
     let updateKoala = req.body;
     // set the ready to transfer flag to true
-    updateKoala.rtt = false;
+    updateKoala.rtt = true;
     console.log('ready to transfer koala:', req.body);
 
     Koala.findByIdAndUpdate({
