@@ -1,5 +1,5 @@
 .nav {
-    background-color: #282c34;
+    /* background-color: #282c34; */
   min-height: 10%;
   margin-bottom: 50px;
   display: flex;
@@ -9,11 +9,7 @@
   font-size: calc(10px + 2vmin);
   color: #a3a3a3;
   text-transform: uppercase;
-  -webkit-transition: 500ms;
--moz-transition: 500ms;
--ms-transition: 500ms;
--o-transition: 500ms;
-transition: 500ms;
+  animation: nav 4s infinite;
 }
 
 .nav:hover {
@@ -25,11 +21,19 @@ transition: 500ms;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  background-color: red;
+  /* background-color: red; */
   text-transform: uppercase;
-  -webkit-transition: 500ms;
--moz-transition: 500ms;
--ms-transition: 500ms;
--o-transition: 500ms;
-transition: 500ms;
+  animation: nav 4s infinite;
+}
+
+@keyframes nav {
+    0% {
+        background-color: #282c34;
+    }
+    50% {
+        background-color: red;
+    }
+    100% {
+        background-color: #282c34;
+    }
 }
