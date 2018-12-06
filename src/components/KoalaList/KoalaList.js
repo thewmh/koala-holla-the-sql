@@ -25,7 +25,7 @@ class KoalaList extends Component {
       //  This function returns a button to click if the bear is
       //  not ready to transfer and a little truck gif if it is
     
-    if (boolean) {
+    if (!boolean) {
       return <Button onClick={() => this.transferKoala(koala)} >Ready</Button>;
     }
     return <iframe title={_id} src="https://giphy.com/embed/IpCUVfiM7p8ly" width="110" height="30" frameBorder="0"  allowFullScreen></iframe>;
