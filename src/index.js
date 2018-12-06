@@ -5,11 +5,9 @@ import App from './components/App/App';
 import * as serviceWorker from './serviceWorker';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import axios from 'axios';
 import logger from 'redux-logger';
 // Import saga middleware
 import createSagaMiddleware from 'redux-saga';
-import { call, put, takeEvery } from 'redux-saga/effects';
 import 'typeface-roboto'
 
 import koalaList from './store/reducers';
