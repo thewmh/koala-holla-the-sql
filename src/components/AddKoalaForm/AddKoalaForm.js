@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class AddKoalaForm extends Component {
 
@@ -52,4 +53,8 @@ class AddKoalaForm extends Component {
     }
 }
 
-export default AddKoalaForm;
+const mapStateToProps = reduxState => ({
+    reduxState,
+  });
+
+export default connect(mapStateToProps)(AddKoalaForm);
