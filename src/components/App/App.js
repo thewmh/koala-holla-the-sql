@@ -27,7 +27,7 @@ class App extends Component {
 				<CssBaseline />
         <Nav />
         <KoalaForm />
-        <KoalaList />
+        <KoalaList getKoalas={this.getKoalas} />
       </MuiThemeProvider>
     );
   }
