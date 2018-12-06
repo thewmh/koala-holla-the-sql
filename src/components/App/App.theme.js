@@ -2,6 +2,11 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import { grey, cyan } from '@material-ui/core/colors';
 
 const theme = createMuiTheme({
+	props: {
+		MuiInputLabel: {
+			shrink: true,
+		}
+	},
   palette: {
     primary: {
 			main: grey[900],
