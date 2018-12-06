@@ -33,7 +33,7 @@ class KoalaList extends Component {
 
   transferKoala = (koala) => {
       console.log('koala: ', koala);
-      this.props.dispatch({ type: 'TRANSFER_KOALA', payload: 'koala' });
+      this.props.dispatch({ type: 'TRANSFER_KOALA', payload: koala });
   }
 
   render() {

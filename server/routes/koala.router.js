@@ -46,14 +46,14 @@ router.post('/', (req, res) => {
 });
 
 // PUT ROUTE TO UPDATE READY TO TRANSFER FLAG
-router.put('/transfer/:id', (req, res) => {
+router.put('/transfer/', (req, res) => {
     let updateKoala = req.body;
     // set the ready to transfer flag to true
-    updateKoala.rtt = true;
+    updateKoala.rtt = false;
     console.log('ready to transfer koala:', req.body);
 
     Koala.findByIdAndUpdate({
-        _id: req.params.id
+        _id: req.body._id
     }, updateKoala)
     .then((results) => {
     console.log(`Success making database UPDATE`, results);

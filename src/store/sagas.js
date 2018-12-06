@@ -45,7 +45,7 @@ function* transferKoala(action) {
       yield put( { type: 'GET_KOALAS' } );
   }
   catch (error) {
-      console.log('error with delete request to /api/koalas/transfer');
+      console.log('error with transfer request to /api/koalas/transfer');
   }
 }
 
