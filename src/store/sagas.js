@@ -29,7 +29,7 @@ function* deleteKoala(action) {
   console.log('in delete saga for removing a koala', action.payload);
   try {
       // axios asynch call to add koala to server
-      yield call(axios.delete, '/api/koalas', action.payload);
+      yield call(axios.delete, '/api/koalas', {params: {id: action.payload}});
       yield put( { type: 'GET_KOALAS' } );
   }
   catch (error) {

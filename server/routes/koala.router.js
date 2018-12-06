@@ -84,8 +84,8 @@ router.put('/transfer/', (req, res) => {
 // })
 
 // Setup DELETE to remove a koala
-router.delete('/:id', (req, res) => {
-    let reqId = req.params.id;
+router.delete('/', (req, res) => {
+    let reqId = req.query.id;
     console.log('Delete request for id', reqId);
     Koala.findOneAndDelete({
         _id: reqId
