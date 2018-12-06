@@ -3,16 +3,34 @@ import React, { Component } from 'react';
 import './App.css';
 import AddKoalaForm from '../AddKoalaForm/AddKoalaForm';
 import KoalaList from '../KoalaList/KoalaList';
+import { connect } from 'react-redux';
+
 
 class App extends Component {
+
+    // When the App is first loaded get our stuff
+    componentDidMount() {
+      this.getKoalas();
+    }
+  
+    getKoalas = () => {
+      // Get our koalas from the server
+      console.log(this.props);
+      this.props.dispatch( { type: 'GET_KOALAS' } );
+    }
+
   render() {
     return (
       <div className="App">
         <AddKoalaForm/>
-        <KoalaList/>
+        <KoalaList getKoalas={this.getKoalas} />
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = reduxState => ({
+  reduxState,
+});
+
+export default connect(mapStateToProps)(App);
