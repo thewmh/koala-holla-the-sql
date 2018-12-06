@@ -10,7 +10,7 @@ app.use(bodyParser.json()); // needed for axios requests
 app.use(express.static('build'));
 
 /** ---------- EXPRESS ROUTES ---------- **/
-app.use('/koalas', koalaRouter);
+app.use('/api/koalas', koalaRouter);
 
 /** ---------- MONGOOSE CONNECTION ---------- **/
 const databaseUrl = 'mongodb://localhost:27017/koalastore'
