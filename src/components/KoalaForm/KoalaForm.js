@@ -3,6 +3,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
 import { withStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import MenuItem from '@material-ui/core/MenuItem';
+import TextField from '@material-ui/core/TextField';
+import { FormControl, FormControlLabel } from '@material-ui/core';
+import Switch from '@material-ui/core/Switch';
+import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
 	root: {
@@ -11,13 +17,27 @@ const styles = theme => ({
 	grow: {
 		flexGrow: 1
 	},
+	grid: {
+		flexGrow: 1,
+		backgroundColor: 'powderblue',
+		padding: 16,
+		display: 'flex',
+		flexWrap: 'wrap',
+	},
+	form: {
+		margin: 0,
+		padding: 0,
+	},
+	test: {
+		border: 'solid red 1px'
+	}
 })
 
 class KoalaForm extends Component {
 
 	state = {
 			name: '',
-			gender: 'f',
+			gender: '',
 			age: 0,
 			rtt: false,
 			notes: '',    
@@ -45,20 +65,86 @@ class KoalaForm extends Component {
 		}
 
 	render() {
+		const { classes } = this.props;
 		return (
-			<div>
-				<input required value={this.state.name} onChange={this.handleChange} type="text" placeholder="Enter the koala's name" name="name"></input>
-				<select required onChange={this.handleChange} placeholder="Enter the koala's gender" name="gender">
-				<option value='f'>F</option>
-				<option value='m'>M</option>
-				</select>
-				<input required value={this.state.age} onChange={this.handleChange} type="number" placeholder="Enter the koala's age" name="age"></input>
-				<select required value={this.state.rtt} onChange={this.handleChange} placeholder="Enter the koala's ready to transfer status" name="rtt">
-				<option value={false}>False</option>
-				<option value={true}>True</option>
-				</select>
-				<textarea value={this.state.notes} required onChange={this.handleChange} type="text" placeholder="Enter any notes about the koala" name="notes"></textarea>
-				<button onClick={this.imprisonTheKoala}>Imprison the Koala</button>
+			<div className={classes.root}>
+				<Grid container spacing={16} className={classes.grid}>
+					<Grid item xs={12}>
+					<Grid container spacing={16} className={classes.grid}>
+						<Grid item className={classes.grow}>
+							<TextField
+								required
+								fullWidth
+								label = "Name"
+								value={this.state.name}
+								onChange={this.handleChange}
+								type="text"
+								placeholder="Enter the koala's name"
+								name="name"
+							/>
+						</Grid>
+						<Grid item>
+							<TextField
+								required
+								fullWidth
+								select
+								label="Gender"
+								onChange={this.handleChange}
+								value={this.state.gender}
+								name="gender"
+							>
+								<MenuItem value="F">F</MenuItem>
+								<MenuItem value="M">M</MenuItem>
+								<MenuItem value="O">O</MenuItem>
+							</TextField>
+						</Grid>
+						<Grid item>
+							<TextField
+								required
+								fullWidth
+								label="Age"
+								value={this.state.age}
+								onChange={this.handleChange}
+								type="number"
+								name="age"
+							/>
+						</Grid>
+						<Grid item>
+							<FormControlLabel
+								control={
+									<Switch
+										color="primary"
+										value={this.state.rtt}
+										onChange={this.handleChange}
+										name="rtt"
+									/>
+									}
+								label="Ready to transfer"
+								labelPlacement="start"
+							/>
+						</Grid>
+						</Grid>
+						<Grid item xs={12}>
+						<Grid container spacing={16} className={classes.grid} direction="row">
+							<Grid item className={classes.grow}>
+								<TextField
+									required
+									fullWidth
+									className={classes.grow}
+									value={this.state.notes}
+									onChange={this.handleChange}
+									type="text"
+									placeholder="Enter additional information about the koala"
+									name="notes"
+								/>
+							</Grid>
+								<Grid item>
+									<Button variant="contained" color="primary" type="submit">Imprison the koala</Button>										
+								</Grid>
+						</Grid>
+					</Grid>
+				</Grid>
+				</Grid>
 			</div>
 		);
 	}
