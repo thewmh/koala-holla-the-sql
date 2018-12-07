@@ -3,12 +3,17 @@ import {MuiThemeProvider} from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from './App.theme';
 import KoalaForm from '../KoalaForm/KoalaForm';
-import KoalaList from '../KoalaList/KoalaList';
+// import KoalaList from '../KoalaList/KoalaList';
 import Nav from '../Nav/Nav';
 import { connect } from 'react-redux';
 import HappyAboutPage from '../AboutPage/HappyAboutPage';
 import SadAboutPage from '../AboutPage/SadAboutPage';
 import GoodNav from '../Nav/GoodNav';
+import KoalaCards from '../KoalaList/KoalaCards';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faAngleDown, faAngleUp, faBroom, faPlane } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faAngleDown, faAngleUp, faBroom, faPlane)
 
 class App extends Component {
 
@@ -50,7 +55,7 @@ class App extends Component {
             <CssBaseline />
             <GoodNav />
             <KoalaForm handleStateClick={this.handleStateClick} />
-            <KoalaList getKoalas={this.getKoalas} />
+            <KoalaCards getKoalas={this.getKoalas} />
             <HappyAboutPage />
           </MuiThemeProvider>
         </div>
@@ -62,7 +67,7 @@ class App extends Component {
             <CssBaseline />
             <Nav />
             <KoalaForm handleStateClick={this.handleStateClick} />
-            <KoalaList getKoalas={this.getKoalas} />
+            <KoalaCards getKoalas={this.getKoalas} />
             <SadAboutPage />
           </MuiThemeProvider>
         </div>

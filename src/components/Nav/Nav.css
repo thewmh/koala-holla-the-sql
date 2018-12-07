@@ -7,7 +7,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: #a3a3a3;
+  color: ghostwhite;
   text-transform: uppercase;
   animation: nav 4s infinite;
 }
@@ -31,7 +31,7 @@
         background-color: #282c34;
     }
     50% {
-        background-color: red;
+        background-color: firebrick;
     }
     100% {
         background-color: #282c34;
@@ -39,7 +39,7 @@
 }
 
 .happy-nav {
-    background-color: skyblue;
+    background-color: #282c34;
     min-height: 10%;
     /* margin-bottom: 50px; */
     display: flex;
@@ -48,5 +48,6 @@
     justify-content: center;
     font-size: calc(10px + 2vmin);
     color: white;
-    text-transform: uppercase;
+		text-transform: uppercase;
+		font-family: 'Karla', sans-serif;
 }

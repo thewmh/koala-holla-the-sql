@@ -1,18 +1,30 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Card from '@material-ui/core/Card'
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
+import { compose } from 'recompose';
+import { withStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
+
+import KoalaListItem from '../KoalaListItem/KoalaListItem'
+
+const styles = theme => ({
+	root: {
+		flexGrow: 1,
+	},
+	background: {
+		padding: 16,
+		marginTop: 1,
+		marginBottom: 1,
+		background: 'powderblue',
+	}
+})
 
 class KoalaList extends Component {
 
   deleteKoala = (id) => {
     this.props.dispatch( { type: 'DELETE_KOALA', payload: id } );
-  }
+	}
 
   readyToTransferButton = (boolean, koala, _id) => {
       //  This function returns a button to click if the bear is
@@ -30,41 +42,31 @@ class KoalaList extends Component {
   }
 
   render() {
-
+		const { classes } = this.props;
+		const { koalaList } = this.props.reduxState
     return (
-        <div>
-            <Table>
-                <TableHead>
-                    <TableRow>
-                        <TableCell>Name</TableCell>
-                        <TableCell>Gender</TableCell>
-                        <TableCell>Age</TableCell>
-                        <TableCell>Ready to Transfer</TableCell>
-                        <TableCell>Notes</TableCell>
-                        <TableCell>Delete</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {this.props.reduxState.koalaList.map( (koala, index) => {
-                        return (
-                            <TableRow key={index}>
-                                <TableCell>{koala.name}</TableCell>
-                                <TableCell>{koala.gender}</TableCell>
-                                <TableCell>{koala.age}</TableCell>
-                                <TableCell>{this.readyToTransferButton(koala.rtt, koala, koala._id)}</TableCell>
-                                <TableCell>{koala.notes}</TableCell>
-                                <TableCell onClick={() => this.deleteKoala(koala._id)}><Button>Delete</Button></TableCell>
-                            </TableRow>
-                        )
-                    })}
-                </TableBody>
-            </Table>
-        </div>
+			<div className={classes.root}>
+				<Grid container spacing={16} alignItems="stretch" className={classes.background}>
+				{koalaList.map((item, index) => {
+					return (
+						<KoalaListItem key={item._id} item={item} deleteKoala={this.deleteKoala} transferKoala={this.transferKoala} readyToTransferButton={this.readyToTransferButton}/>
+					)
+				})}
+				</Grid>
+			</div>
     );
   }
-
 }
 
-const mapReduxStateToProps = ( reduxState ) => ({ reduxState });
+KoalaList.propTypes = {
+	classes: PropTypes.object.isRequired,
+}
 
-export default connect(mapReduxStateToProps)(KoalaList);
+const mapStateToProps = reduxState => ({
+	reduxState,
+});
+
+export default compose(
+	connect(mapStateToProps),
+	withStyles(styles),
+)(KoalaList);

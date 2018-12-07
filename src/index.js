@@ -8,7 +8,8 @@ import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 // Import saga middleware
 import createSagaMiddleware from 'redux-saga';
-//import 'typeface-roboto';
+import 'typeface-roboto';
+import 'typeface-karla';
 
 import koalaList from './store/reducers';
 import rootSaga from './store/sagas';
