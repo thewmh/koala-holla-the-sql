@@ -6,6 +6,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Button from '@material-ui/core/Button';
+import truck from '../truck.gif';
 
 class KoalaList extends Component {
 
@@ -20,7 +21,8 @@ class KoalaList extends Component {
     if (!boolean) {
       return <Button onClick={() => this.transferKoala(koala)} >Ready</Button>;
     }
-    return <iframe title={_id} src="https://giphy.com/embed/IpCUVfiM7p8ly" width="110" height="30" frameBorder="0"  allowFullScreen></iframe>;
+        return <img src={truck} width="80" height="30"></img>
+    // return <iframe title={_id} src="https://giphy.com/embed/IpCUVfiM7p8ly" width="110" height="30" frameBorder="0"  allowFullScreen></iframe>;
   }
 
   transferKoala = (koala) => {
